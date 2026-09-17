@@ -59,7 +59,7 @@ function DrawerOverlay({
   return (
     <DrawerPrimitive.Backdrop
       className={cn(
-        'fixed inset-0 z-50 min-h-dvh bg-black/35 opacity-[calc(1-var(--drawer-swipe-progress))] transition-opacity duration-450 ease-[cubic-bezier(0.32,0.72,0,1)] data-ending-style:pointer-events-none data-ending-style:opacity-0 data-starting-style:opacity-0 data-swiping:duration-0 supports-[-webkit-touch-callout:none]:absolute',
+        'fixed inset-0 z-50 min-h-dvh bg-transparent opacity-[calc(1-var(--drawer-swipe-progress))] transition-opacity duration-450 ease-[cubic-bezier(0.32,0.72,0,1)] data-ending-style:pointer-events-none data-ending-style:opacity-0 data-starting-style:opacity-0 data-swiping:duration-0 dark:bg-black/20 supports-[-webkit-touch-callout:none]:absolute',
         className,
       )}
       data-slot="drawer-overlay"

@@ -90,7 +90,7 @@ export function AudioPlayer({ text }: AudioPlayerProps) {
         render={
           <button
             aria-label="Open audio player"
-            className="shadow-2xs group flex h-8 w-8 items-center justify-center rounded-full border border-zinc-700 bg-black transition-colors hover:bg-zinc-800/80"
+            className="shadow-2xs group flex h-8 w-8 items-center justify-center rounded-full border border-zinc-300 bg-white transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:bg-black dark:hover:bg-zinc-800/80"
             type="button"
           />
         }
@@ -99,11 +99,11 @@ export function AudioPlayer({ text }: AudioPlayerProps) {
           icon={Play}
           color="currentColor"
           strokeWidth={2}
-          className="size-4 fill-zinc-500 text-zinc-500 transition-colors group-hover:fill-white group-hover:text-white group-focus-visible:fill-white group-focus-visible:text-white"
+          className="size-4 fill-zinc-500 text-zinc-500 transition-colors group-hover:fill-zinc-950 group-hover:text-zinc-950 group-focus-visible:fill-zinc-950 group-focus-visible:text-zinc-950 dark:group-hover:fill-white dark:group-hover:text-white dark:group-focus-visible:fill-white dark:group-focus-visible:text-white"
         />
       </DrawerTrigger>
 
-      <DrawerContent className="overflow-visible bg-[linear-gradient(to_bottom,#111113_0%,#0d0d0f_32%,#09090b_68%,#09090b_100%)] before:pointer-events-none before:absolute before:inset-x-0 before:-top-24 before:h-24 before:bg-[linear-gradient(to_bottom,transparent,#111113)] before:content-['']">
+      <DrawerContent className="overflow-visible bg-white before:pointer-events-none before:absolute before:inset-x-0 before:-top-40 before:h-40 before:bg-[linear-gradient(to_bottom,transparent,#ffffff)] before:content-[''] dark:bg-[linear-gradient(to_bottom,#111113_0%,#0d0d0f_32%,#09090b_68%,#09090b_100%)] dark:before:bg-[linear-gradient(to_bottom,transparent,#111113)]">
         <div className="mx-auto max-w-5xl px-6 pb-8 pt-6 sm:px-10 sm:pb-10 sm:pt-8">
           <div className="flex items-center gap-4 sm:gap-6">
             <div
@@ -115,7 +115,7 @@ export function AudioPlayer({ text }: AudioPlayerProps) {
             </div>
 
             <div className="min-w-0">
-              <DrawerTitle className="truncate font-medium text-base text-zinc-100">
+              <DrawerTitle className="truncate font-medium text-base text-zinc-900 dark:text-zinc-100">
                 Animating a div
               </DrawerTitle>
               <DrawerDescription className="mt-1 truncate text-sm">

@@ -31,21 +31,21 @@ export default async function Slug({ params }: PageProps) {
         <div className="flex items-center gap-2">
           <AudioPlayer text={articleParagraphs.join(' ')} />
           <button
-            className="shadow-2xs group flex items-center justify-center h-8 w-8 rounded-full border border-zinc-700 bg-black hover:bg-zinc-800/80"
+            className="shadow-2xs group flex items-center justify-center h-8 w-8 rounded-full border border-zinc-300 bg-white hover:bg-zinc-100 dark:border-zinc-700 dark:bg-black dark:hover:bg-zinc-800/80"
             type="button"
           >
             <HugeiconsIcon
               icon={EllipsisIcon}
               color="currentColor"
               strokeWidth={2}
-              className="size-4 group-hover:text-white text-zinc-500 group-focus-within:text-white"
+              className="size-4 text-zinc-500 group-hover:text-zinc-950 group-focus-within:text-zinc-950 dark:group-hover:text-white dark:group-focus-within:text-white"
             />
           </button>
         </div>
       </header>
 
       <article
-        className="prose prose-zinc mt-2.5 max-w-none dark:prose-invert prose-p:text-[13px] prose-p:leading-6 prose-h2:text-lg text-zinc-400"
+        className="prose prose-zinc mt-2.5 max-w-none dark:prose-invert prose-p:text-[13px] prose-p:leading-6 prose-h2:text-lg text-zinc-600 dark:text-zinc-400"
         data-slug={slug}
       >
         <p>Dec 28, 2026 by Andres dos Santos</p>
@@ -55,11 +55,13 @@ export default async function Slug({ params }: PageProps) {
         ))}
       </article>
 
-      <footer className="border-t border-zinc-800 mt-10 pt-10 pb-32">
+      <footer className="border-t border-zinc-200 mt-10 pt-10 pb-32 dark:border-zinc-800">
         <ol>
           <li className="flex items-center gap-2">
-            <p className="text-[10px] font-semibold text-zinc-600 mb-2">1</p>
-            <p className="text-xs text-zinc-600">
+            <p className="text-[10px] font-semibold text-zinc-400 mb-2 dark:text-zinc-600">
+              1
+            </p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-600">
               Motion should clarify what changed, not compete with the content
               for attention.
             </p>
