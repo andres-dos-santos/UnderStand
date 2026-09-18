@@ -35,10 +35,12 @@ function formatTime(seconds: number) {
 }
 
 type AudioPlayerProps = {
+  author: string
   text: string
+  title: string
 }
 
-export function AudioPlayer({ text }: AudioPlayerProps) {
+export function AudioPlayer({ author, text, title }: AudioPlayerProps) {
   const duration = useMemo(() => getReadingDuration(text), [text])
   const [currentTime, setCurrentTime] = useState(0)
   const { pause, paused, resume, speak, speaking, stop } = useTextToSpeech()
@@ -90,7 +92,7 @@ export function AudioPlayer({ text }: AudioPlayerProps) {
         render={
           <button
             aria-label="Open audio player"
-            className="shadow-2xs group flex h-8 w-8 items-center justify-center rounded-full border border-zinc-300 bg-white transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:bg-black dark:hover:bg-zinc-800/80"
+            className="group flex size-8 items-center justify-center rounded-[7px] border border-zinc-400 shadow-sm transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900/20 dark:hover:bg-zinc-800"
             type="button"
           />
         }
@@ -99,11 +101,11 @@ export function AudioPlayer({ text }: AudioPlayerProps) {
           icon={Play}
           color="currentColor"
           strokeWidth={2}
-          className="size-4 fill-zinc-500 text-zinc-500 transition-colors group-hover:fill-zinc-950 group-hover:text-zinc-950 group-focus-visible:fill-zinc-950 group-focus-visible:text-zinc-950 dark:group-hover:fill-white dark:group-hover:text-white dark:group-focus-visible:fill-white dark:group-focus-visible:text-white"
+          className="size-4 fill-black text-black dark:fill-white dark:text-white"
         />
       </DrawerTrigger>
 
-      <DrawerContent className="overflow-visible bg-white before:pointer-events-none before:absolute before:inset-x-0 before:-top-40 before:h-40 before:bg-[linear-gradient(to_bottom,transparent,#ffffff)] before:content-[''] dark:bg-[linear-gradient(to_bottom,#111113_0%,#0d0d0f_32%,#09090b_68%,#09090b_100%)] dark:before:bg-[linear-gradient(to_bottom,transparent,#111113)]">
+      <DrawerContent className="overflow-visible border-zinc-200 border-t bg-white shadow-[0_-16px_50px_rgba(24,24,27,0.08)] before:pointer-events-none before:absolute before:inset-x-0 before:-top-40 before:h-40 before:bg-[linear-gradient(to_bottom,transparent,#ffffff)] before:content-[''] dark:border-zinc-800 dark:bg-[linear-gradient(to_bottom,#111113_0%,#0d0d0f_32%,#09090b_68%,#09090b_100%)] dark:shadow-none dark:before:bg-[linear-gradient(to_bottom,transparent,#111113)]">
         <div className="mx-auto max-w-5xl px-6 pb-8 pt-6 sm:px-10 sm:pb-10 sm:pt-8">
           <div className="flex items-center gap-4 sm:gap-6">
             <div
@@ -116,10 +118,10 @@ export function AudioPlayer({ text }: AudioPlayerProps) {
 
             <div className="min-w-0">
               <DrawerTitle className="truncate font-medium text-base text-zinc-900 dark:text-zinc-100">
-                Animating a div
+                {title}
               </DrawerTitle>
               <DrawerDescription className="mt-1 truncate text-sm">
-                Andres dos Santos
+                {author}
               </DrawerDescription>
             </div>
           </div>
@@ -128,12 +130,12 @@ export function AudioPlayer({ text }: AudioPlayerProps) {
             <span className="w-10 text-xs">{formatTime(currentTime)}</span>
             <input
               aria-label="Audio progress"
-              className="h-0.5 flex-1 cursor-pointer appearance-none rounded-full bg-transparent accent-zinc-200 [&::-moz-range-progress]:h-0.5 [&::-moz-range-progress]:rounded-full [&::-moz-range-progress]:bg-zinc-200 [&::-moz-range-thumb]:size-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-zinc-500 [&::-moz-range-track]:h-0.5 [&::-moz-range-track]:rounded-full [&::-moz-range-track]:bg-zinc-700 [&::-webkit-slider-runnable-track]:h-0.5 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-transparent [&::-webkit-slider-thumb]:-mt-[7px] [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-zinc-500"
+              className="h-0.5 flex-1 cursor-pointer appearance-none rounded-full bg-transparent accent-zinc-700 [--progress-active:var(--color-zinc-700)] [--progress-track:var(--color-zinc-200)] dark:accent-zinc-200 dark:[--progress-active:var(--color-zinc-200)] dark:[--progress-track:var(--color-zinc-700)] [&::-moz-range-progress]:h-0.5 [&::-moz-range-progress]:rounded-full [&::-moz-range-progress]:bg-zinc-700 dark:[&::-moz-range-progress]:bg-zinc-200 [&::-moz-range-thumb]:size-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-zinc-600 dark:[&::-moz-range-thumb]:border-zinc-950 dark:[&::-moz-range-thumb]:bg-zinc-300 [&::-moz-range-track]:h-0.5 [&::-moz-range-track]:rounded-full [&::-moz-range-track]:bg-zinc-200 dark:[&::-moz-range-track]:bg-zinc-700 [&::-webkit-slider-runnable-track]:h-0.5 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-transparent [&::-webkit-slider-thumb]:-mt-[7px] [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-zinc-600 dark:[&::-webkit-slider-thumb]:border-zinc-950 dark:[&::-webkit-slider-thumb]:bg-zinc-300"
               max={duration}
               min="0"
               onChange={(event) => setCurrentTime(Number(event.target.value))}
               style={{
-                background: `linear-gradient(to right, var(--color-zinc-200) ${(currentTime / duration) * 100}%, var(--color-zinc-700) ${(currentTime / duration) * 100}%)`,
+                background: `linear-gradient(to right, var(--progress-active) ${(currentTime / duration) * 100}%, var(--progress-track) ${(currentTime / duration) * 100}%)`,
               }}
               type="range"
               value={currentTime}
@@ -146,7 +148,7 @@ export function AudioPlayer({ text }: AudioPlayerProps) {
           <div className="mt-7 grid grid-cols-3 items-center">
             <button
               aria-label="Download audio"
-              className="justify-self-start p-2 text-zinc-400 transition-colors hover:text-white"
+              className="justify-self-start p-2 text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
               type="button"
             >
               <HugeiconsIcon
@@ -159,19 +161,19 @@ export function AudioPlayer({ text }: AudioPlayerProps) {
             <div className="flex items-center justify-center gap-5 sm:gap-7">
               <button
                 aria-label="Go back 15 seconds"
-                className="p-2 text-zinc-400 transition-colors hover:text-white"
+                className="p-2 text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
                 onClick={() => skip(-15)}
                 type="button"
               >
                 <HugeiconsIcon
                   icon={Backward02Icon}
-                  className="size-5 fill-zinc-400/90 text-zinc-400/90"
+                  className="size-5 fill-current"
                 />
               </button>
 
               <button
                 aria-label={speaking ? 'Pause audio' : 'Play audio'}
-                className="grid size-11 place-items-center rounded-full text-zinc-200 transition-colors hover:bg-white/5 hover:text-white"
+                className="grid size-11 place-items-center rounded-full bg-zinc-100 text-zinc-700 transition-colors hover:bg-zinc-200 hover:text-zinc-950 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10 dark:hover:text-white"
                 onClick={togglePlayback}
                 type="button"
               >
@@ -183,20 +185,20 @@ export function AudioPlayer({ text }: AudioPlayerProps) {
 
               <button
                 aria-label="Go forward 15 seconds"
-                className="p-2 text-zinc-400 transition-colors hover:text-white"
+                className="p-2 text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
                 onClick={() => skip(15)}
                 type="button"
               >
                 <HugeiconsIcon
                   icon={FastForwardIcon}
-                  className="size-5 fill-zinc-400/90 text-zinc-400/90"
+                  className="size-5 fill-current"
                 />
               </button>
             </div>
 
             <button
               aria-label="Restart audio"
-              className="justify-self-end p-2 text-zinc-400 transition-colors hover:text-white"
+              className="justify-self-end p-2 text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
               onClick={() => {
                 setCurrentTime(0)
                 speak(text, 'en-US')

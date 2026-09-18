@@ -1,12 +1,16 @@
 import type { Metadata } from 'next'
-import { DM_Sans } from 'next/font/google'
+import { DM_Sans, Space_Mono } from 'next/font/google'
 import './globals.css'
-import Link from 'next/link'
-import { ThemeToggle } from '@/components/theme-toggle'
 
-const geistSans = DM_Sans({
-  variable: '--font-sans',
+const sans = DM_Sans({
+  variable: '--font-dm-sans',
   subsets: ['latin'],
+})
+
+const mono = Space_Mono({
+  variable: '--font-space-mono',
+  subsets: ['latin'],
+  weight: ['400', '700'],
 })
 
 export const metadata: Metadata = {
@@ -18,45 +22,10 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} h-full antialiased`}
+      className={`${sans.variable} ${mono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light'}catch(e){}})()`,
-          }}
-        />
-      </head>
-      <body className="min-h-full flex flex-col">
-        <main className="w-full max-w-3xl mx-auto px-5 sm:px-20">
-          <header className="flex items-center justify-between w-full h-20">
-            <Link href="/">
-              <span className="tracking-widest leading-5 text-xs text-zinc-500 hover:text-zinc-950 dark:hover:text-white font-bold">
-                UNDER
-              </span>
-            </Link>
-
-            <nav className="flex items-center gap-5">
-              <ThemeToggle />
-              <Link href="/new">
-                <p className="text-zinc-500 transition-all duration-200 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white font-semibold text-[10px]">
-                  NEW POST
-                </p>
-              </Link>
-              <Link
-                className="h-6 w-6 bg-orange-500 rounded-full flex items-center justify-center"
-                href="/posts"
-              >
-                <p className="font-bold text-zinc-900 text-[10px] tracking-wider">
-                  A
-                </p>
-              </Link>
-            </nav>
-          </header>
-          {children}
-        </main>
-      </body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   )
 }

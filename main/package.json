@@ -12,6 +12,7 @@
     "@hugeicons/core-free-icons": "^4.3.3",
     "@hugeicons/react": "^1.1.10",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.23",
     "next": "16.3.5",
     "react": "19.2.8",
     "react-dom": "19.2.8",
