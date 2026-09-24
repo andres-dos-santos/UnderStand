@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { DM_Sans, Space_Mono, Instrument_Serif } from 'next/font/google'
+import { AuthFeedback } from '@/components/auth-feedback'
 import './globals.css'
 
 const sans = DM_Sans({
@@ -47,7 +48,10 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       className={`${sans.variable} ${mono.variable} ${title.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <AuthFeedback />
+      </body>
     </html>
   )
 }
