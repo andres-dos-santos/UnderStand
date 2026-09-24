@@ -2,7 +2,7 @@ import 'server-only'
 
 import type { New } from '@/types/new'
 
-const apiUrl = process.env.API_URL ?? 'http://localhost:3001'
+const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001'
 
 type ApiNews = {
   _id?: string | { $oid?: string }

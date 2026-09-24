@@ -120,7 +120,7 @@ export default function LoginPage() {
               </div> */}
 
               <a
-                href="http://localhost:3001/sign-up"
+                href="/sign-up"
                 className="inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-md border border-zinc-300 bg-white text-sm font-medium -tracking-wider text-zinc-950 outline-none transition hover:bg-zinc-50 focus-visible:ring-4 focus-visible:ring-zinc-950/20"
               >
                 <GoogleLogo className="size-5" />
